@@ -1,10 +1,8 @@
 ---
-title: "PEP_DataMgmtPlan"
+title: "PEP Data Management Plan"
 format: html
 editor: visual
 ---
-
-# PEP Data Management Plan
 
 ## Objective
 
