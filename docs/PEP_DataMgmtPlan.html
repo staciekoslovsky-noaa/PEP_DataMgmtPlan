@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PEP Data Management Plan</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PEP Data Management Plan</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
+<p>To outline and implement consistent information management procedures for PEP data.</p>
+</section>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Data are our legacy. The data we collect, manage and analyze today will continue to be available and used by staff in the future. It is, therefore, important to maintain, organize and share our data in a way that will be useful and meaningful to current and future users. This includes:</p>
+<ul>
+<li><p>Keeping files organized and up-to-date;</p></li>
+<li><p>Documenting information about the files and the process(es) for creating the files;</p></li>
+<li><p>Cleaning out files (and paperwork) that are not important for the future legacy of the data (e.g.&nbsp;intermediate files, outdated information); and</p></li>
+<li><p>Sharing data with the public and interested partners.</p></li>
+</ul>
+<section id="foundations-to-data-management" class="level3">
+<h3 class="anchored" data-anchor-id="foundations-to-data-management">Foundations to Data Management</h3>
+<p>A recently published paper in PLOS ONE, <a href="https://arxiv.org/pdf/1609.00037.pdf">Good Enough Practices in Scientific Computing</a>, provides a thorough overview of best practices and workflows for managing scientific data. While much of the focus is maybe out of our scope and focuses more on scientific computing, a few key principles in the data management section are worth focusing on:</p>
+<ol type="1">
+<li><p><strong>Create the data you wish to see in the world</strong>. The original, raw data collected in the field or offloaded from sensors is rarely the data type and quality of data we would like to share with the world and have our names associated with. Data formats, data organization, column names, value data types and formats (e.g.&nbsp;date-time) can all be transformed and improved into higher quality forms. The better formed the data are, the easier subsequent analyses will be, the more reproducible our science will be, and the more likely it is that others will find use in our data.</p></li>
+<li><p><strong>Create analysis-friendly (e.g.&nbsp;tidy) data</strong>. In many cases, analysis-friendly data will be equivalent to the data you wish to see in the world. The key principle at play here is that of “tidy” data. Hadley Wickham’s <a href="https://www.jstatsoft.org/article/view/v059i10/v59i10.pdf">2014 manuscript</a> does an excellent job outlining the ideal structure of tidy data. The key components of tidy data are:</p>
+<ol type="a">
+<li><p>Each variable forms a column.</p></li>
+<li><p>Each observation forms a row.</p></li>
+<li><p>Each type of observational unit forms a table.</p></li>
+</ol></li>
+<li><p>Not only are these principles important for analyzing data in programming languages (such as R or Python), they are also key components to a well-organized database. Organizing data in this way will allow easier ingestion into a database; once your data are in a central database, the more tools for exploring and analyzing your data will be available.</p></li>
+<li><p><strong>Record all the steps used to process data</strong>. Embracing scripts developed in a programming language (such as R or Python) is essential to providing a robust, reproducible workflow for your data. With large, complex datasets, manually processing data via mouse clicks and Excel or Google Sheets centric workflows are often time-consuming and difficult to reproduce. As part of the planning process for the PEP data management workflow, we will evaluate existing data management processes and identify ways to simplify and automate existing or new steps.</p></li>
+</ol>
+</section>
+</section>
+<section id="data-management-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="data-management-workflow">Data Management Workflow</h2>
+<p>The figure below describes the general process that PEP will implement for managing data, start to finish. We will ultimately create a Google Drive spreadsheet that inventories the status of each project related to each of the steps in the process and associated details about the data (e.g.&nbsp;where it is stored, where it is shared).</p>
+<p>[INSERT FIGURE HERE]</p>
+<p>**For projects that have already started or are just getting started, we will take steps to update data management and products as outlined in this document.</p>
+<section id="planning-and-design" class="level3">
+<h3 class="anchored" data-anchor-id="planning-and-design">Planning and Design</h3>
+<p>The <a href="https://nosc.noaa.gov/EDMC/PD.DMP.php">NOAA Data Management Planning Procedural Directive</a> (PD) (<a href="https://nosc.noaa.gov/EDMC/documents/EDMC-PD-DMP-2.0.1.pdf">direct link</a> to PDF of current version 2.0.1) requires a data management plan to be developed for all environmental data collected by NOAA programs or systems. The PD provides a generic template and guideline for developing a data management plan and a <a href="https://drive.google.com/drive/u/0/folders/0Bwl6f-PNVtnndG0yOUJ5cGU0RGs">data management plan repository</a> has been established. A common tool for developing data management plans (<a href="https://dmptool.org" class="uri">https://dmptool.org</a>) has a template for NOAA. These represent a minimum requirement and, in fact, PEP data management plans will likely be more thorough. All data management plans should be developed in collaboration with the PEP data science lead (Stacie Koslovsky) and established prior to data collection.</p>
+<p>Prior to any new data collection, work with S. Koslovsky to:</p>
+<ul>
+<li><p>Complete and submit a data management plan;</p></li>
+<li><p>Identify where data will be stored (both short- and long-term; and set up the workspace), what data products will be needed, and what data processing will be required;</p></li>
+<li><p>Create storage locations on network for final data and on Google Drive/elsewhere for intermediate processing; ensure necessary staff have access to these locations;</p></li>
+<li><p>Develop/evaluate/implement data collection strategies that facilitate and simplify data management steps that follow;</p></li>
+<li><p>Coordinate (or at least communicate) with the AFSC OFIS team regarding network storage space needs and any other concerns;</p></li>
+<li><p>Decide how best to organize the metadata for the project (parent vs.&nbsp;child, new vs.&nbsp;add to existing). All metadata entries within InPort will be published publicly and, eventually, used to create standards compliant alongside any open data products. A one-to-one relationship between metadata records and eventual open data products often makes this process easier.</p></li>
+</ul>
+</section>
+<section id="data-management" class="level3">
+<h3 class="anchored" data-anchor-id="data-management">Data Management</h3>
+<p>After field work is completed, our aim will be to download, process and QA/QC data as soon as possible. All data should be archived to the network no later than <strong>one month</strong> after the completion of the project.</p>
+<section id="field-data-collection" class="level4">
+<h4 class="anchored" data-anchor-id="field-data-collection">Field Data Collection</h4>
+<p>During field data collection, begin preliminary data management, as able:</p>
+<ul>
+<li><p>Review datasheets for data recording errors;</p></li>
+<li><p>Scan datasheets for backup;</p></li>
+<li><p>Use temporary storage on external/portable drives, cloud providers, or individual government laptops to backup images, scanned datasheets and other critical files; and</p></li>
+<li><p>Enter field data into cloud-based data entry tools.</p></li>
+</ul>
+</section>
+<section id="raw-and-original-data" class="level4">
+<h4 class="anchored" data-anchor-id="raw-and-original-data">Raw and Original Data</h4>
+<p>The AFSC’s network will be the primary storage location for all environmental data collected by PEP (see more details in Section 5: PEP Network Folder Structure).</p>
+<ul>
+<li><p>In practice, the transfer of data from field collection storage to the network should be the first priority upon returning from the field. Temporary storage of files on external/portable drives, cloud providers, individual government laptops should not exceed 30 days after return from the field</p></li>
+<li><p>After data are transferred to the network, files and associated information should be reviewed for consistency.</p></li>
+<li><p>In general, ‘raw’ or ‘original’ data collected in the field should not be altered.</p></li>
+<li><p>In cases where the data are known to be incorrect or a more correct value is known, those files or entries should be edited.</p></li>
+<li><p>A common occurrence is for files to not be named properly in the field. File names should be corrected at this time.</p></li>
+<li><p>Additionally, data transcription errors can occur, and this is the appropriate time to fix those errors.</p></li>
+</ul>
+</section>
+<section id="processed-and-final-data" class="level4">
+<h4 class="anchored" data-anchor-id="processed-and-final-data">Processed and Final Data</h4>
+<p>After raw/original data are archived to the network, data should be processed and reviewed for outliers. The processing and review steps will vary by project, but generally:</p>
+<ul>
+<li><p>We will use automated processes for streamlining and documenting processes whenever possible.</p></li>
+<li><p>Custom data-entry forms and/or spatial processing templates will be created for data entry and processing when needed.</p></li>
+<li><p>Queries and/or other data visualizations will be used to facilitate data QA/QC.</p></li>
+<li><p>Spatial data (grid and other products) will be stored in their native projection in the database.</p>
+<ul>
+<li><p>For many projects, this will be WGS-84.</p></li>
+<li><p>Spatial data from outside sources (e.g.&nbsp;environmental data) will be stored in the original projection. This may require data to be reprojected for specific analyses or other needs.</p></li>
+</ul></li>
+<li><p>Environmental data will be updated in the pep DB annually in August. Additional environmental data can be accessed from other data sources online. If you need help with this, contact E. Richmond or S. Koslovsky.</p></li>
+</ul>
+</section>
+<section id="backup-procedures" class="level4">
+<h4 class="anchored" data-anchor-id="backup-procedures">Backup Procedures</h4>
+<p>All data copied to the network are backed up offsite in one of two ways: snap-mirrored to another NMFS facility, tape backup delivered off site (reserved for large files that change infrequently (e.g.&nbsp;imagery, acoustic files, video). In addition, any data that are snap-mirrored are also backed up differentially and that allows incremental restoration (daily for 7 days, weekly for 6 months).</p>
+<p>For many small datasets, storing the data on the AFSC network will suffice. For data that are larger or are the result of significant time, effort, or money, a more robust archival system is desirable. For NOAA environmental data, the <a href="https://www.ncei.noaa.gov/">National Centers for Environmental Information</a> (NCEI) provides this capability. The data submission process is handled through the <a href="https://www.nodc.noaa.gov/s2n/">Send2NCEI</a> (aka S2N) application. Very large datasets (100s of gigabytes to terabytes) will require additional coordination with NCEI data liaisons (NODC.DataOfficer@noaa.gov).</p>
+</section>
+</section>
+<section id="analysis-and-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-and-interpretation">Analysis and Interpretation</h3>
+<p>Part of the data workflow is to ensure the final products are easily usable and accessible for analyses. Accessing data for each analysis will be different; work with S. Koslovsky to identify the most efficient way to extract data from the DB and/or network for your needs.</p>
+<p>Further, we want to emphasize the feedback loop from analytical processes to data management. Our goal with data management is to streamline processing and extraction of information for analyses. This may be updates/improvements to data management processes over time. Feedback and communication are important for ensuring data products meet current and future analytical needs.</p>
+</section>
+<section id="products" class="level3">
+<h3 class="anchored" data-anchor-id="products">Products</h3>
+<p>Data are considered final when a project is completed (e.g., CHESS) or when the annual data processing for a project (e.g., harbor seal surveys) is completed. After data are processed and considered final, S. Koslovsky will notify PI and data sharing staff to prepare final datasets for archive and distribution (when appropriate).</p>
+<section id="overall-workflow" class="level4">
+<h4 class="anchored" data-anchor-id="overall-workflow">Overall Workflow</h4>
+<p>[INSERT FIGURE HERE]</p>
+</section>
+<section id="metadata" class="level4">
+<h4 class="anchored" data-anchor-id="metadata">Metadata</h4>
+<p>NOAA Fisheries requires that all data collected be documented within the official NOAA Fisheries metadata repository, <a href="https://inport.nmfs.noaa.gov/inport">InPort</a>. InPort provides an extensive suite of tools for editing and managing metadata. Consult with appropriate staff (TBD) to establish a metadata plan and to get started with InPort. However, responsibility for creating, editing, and maintaining InPort records lies with the project leads. Because these records will be available to the public and, in many cases, represent the authoritative documentation of the data set, project leads should devote an appropriate amount of time and thought to development of metadata records.</p>
+<p>[ADD NEW STEPS FOR WORKING WITH CYNTHIA TO WRITE NEW METADATA RECORDS]</p>
+</section>
+<section id="online-repositories" class="level4">
+<h4 class="anchored" data-anchor-id="online-repositories">Online Repositories</h4>
+<p>Much of the data collected and processed as part of PEP research activities is intended for public release, either in compliance with NOAA policies (e.g.&nbsp;Public Access to Research Results [PARR]) or in support of best practices related to open science and reproducible research. Keeping track of the evolving policies and expanding tools/repositories available can be challenging. Here, we outline our plan for the use of available repositories.</p>
+<p>If you are publishing a manuscript and the journal requires the data to be provided on an open data portal, work with S. Koslovsky to identify the most appropriate repository and to ensure metadata are created.</p>
+</section>
+</section>
+</section>
+<section id="r-package-pepdataconnect" class="level2">
+<h2 class="anchored" data-anchor-id="r-package-pepdataconnect">R Package: pepDataConnect</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting started with pepDataConnect</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'staciekoslovsky-noaa/pepDataConnect'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To connect to the database, create a connection</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> pepDataConnect<span class="sc">::</span><span class="fu">pep_connect</span>()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># To load data into your R workspace, use one of the table functions</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> pepDataConnect<span class="sc">::</span><span class="fu">surv_jobss.tbl_detections_processed_ir</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
