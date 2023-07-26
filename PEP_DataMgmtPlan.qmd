@@ -148,9 +148,9 @@ If you are publishing a manuscript and the journal requires the data to be provi
 
 ## R Package: pepDataConnect
 
-``` R
+``` r
 # Getting started with pepDataConnect
-remotes::install_github('staciekozhardy/pepDataConnect')
+remotes::install_github('staciekoslovsky-noaa/pepDataConnect')
 
 # To connect to the database, create a connection
 con <- pepDataConnect::pep_connect()
