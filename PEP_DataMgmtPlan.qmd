@@ -4,11 +4,11 @@ format: html
 editor: visual
 ---
 
-## Objective
+# Objective
 
-To outline and implement consistent information management procedures for PEP data.
+Welcome to the Polar Ecosystems Program (PEP; pronounced both as P-E-P and pep) Data Management Plan. The objective of this document is to outline and implement consistent information management procedures for PEP data.
 
-## Overview
+# Overview
 
 Data are our legacy. The data we collect, manage and analyze today will continue to be available and used by staff in the future. It is, therefore, important to maintain, organize and share our data in a way that will be useful and meaningful to current and future users. This includes:
 
@@ -20,7 +20,7 @@ Data are our legacy. The data we collect, manage and analyze today will continue
 
 -   Sharing data with the public and interested partners.
 
-### Foundations to Data Management
+## Foundations to Data Management
 
 A recently published paper in PLOS ONE, [Good Enough Practices in Scientific Computing](https://arxiv.org/pdf/1609.00037.pdf), provides a thorough overview of best practices and workflows for managing scientific data. While much of the focus is maybe out of our scope and focuses more on scientific computing, a few key principles in the data management section are worth focusing on:
 
@@ -42,11 +42,11 @@ A recently published paper in PLOS ONE, [Good Enough Practices in Scientific Com
 
 The figure below describes the general process that PEP will implement for managing data, start to finish. We will ultimately create a Google Drive spreadsheet that inventories the status of each project related to each of the steps in the process and associated details about the data (e.g. where it is stored, where it is shared).
 
-\[INSERT FIGURE HERE\]
+![](docs/PEP_DataMgmtPlan_files/images/DataManagementWorkflow.png){fig-align="center"}
 
 \*\*For projects that have already started or are just getting started, we will take steps to update data management and products as outlined in this document.
 
-### Planning and Design
+## Planning and Design
 
 The [NOAA Data Management Planning Procedural Directive](https://nosc.noaa.gov/EDMC/PD.DMP.php) (PD) ([direct link](https://nosc.noaa.gov/EDMC/documents/EDMC-PD-DMP-2.0.1.pdf) to PDF of current version 2.0.1) requires a data management plan to be developed for all environmental data collected by NOAA programs or systems. The PD provides a generic template and guideline for developing a data management plan and a [data management plan repository](https://drive.google.com/drive/u/0/folders/0Bwl6f-PNVtnndG0yOUJ5cGU0RGs) has been established. A common tool for developing data management plans (<https://dmptool.org>) has a template for NOAA. These represent a minimum requirement and, in fact, PEP data management plans will likely be more thorough. All data management plans should be developed in collaboration with the PEP data science lead (Stacie Koslovsky) and established prior to data collection.
 
@@ -64,11 +64,11 @@ Prior to any new data collection, work with S. Koslovsky to:
 
 -   Decide how best to organize the metadata for the project (parent vs. child, new vs. add to existing). All metadata entries within InPort will be published publicly and, eventually, used to create standards compliant alongside any open data products. A one-to-one relationship between metadata records and eventual open data products often makes this process easier.
 
-### Data Management
+## Data Management
 
 After field work is completed, our aim will be to download, process and QA/QC data as soon as possible. All data should be archived to the network no later than **one month** after the completion of the project.
 
-#### Field Data Collection
+### Field Data Collection
 
 During field data collection, begin preliminary data management, as able:
 
@@ -80,9 +80,9 @@ During field data collection, begin preliminary data management, as able:
 
 -   Enter field data into cloud-based data entry tools.
 
-#### Raw and Original Data
+### Raw and Original Data
 
-The AFSC's network will be the primary storage location for all environmental data collected by PEP (see more details in Section 5: PEP Network Folder Structure).
+The AFSC network is the primary storage location for all data collected by PEP (see more details in Section 5: PEP Network Folder Structure).
 
 -   In practice, the transfer of data from field collection storage to the network should be the first priority upon returning from the field. Temporary storage of files on external/portable drives, cloud providers, individual government laptops should not exceed 30 days after return from the field
 
@@ -96,7 +96,7 @@ The AFSC's network will be the primary storage location for all environmental da
 
 -   Additionally, data transcription errors can occur, and this is the appropriate time to fix those errors.
 
-#### Processed and Final Data
+### Processed and Final Data
 
 After raw/original data are archived to the network, data should be processed and reviewed for outliers. The processing and review steps will vary by project, but generally:
 
@@ -114,39 +114,41 @@ After raw/original data are archived to the network, data should be processed an
 
 -   Environmental data will be updated in the pep DB annually in August. Additional environmental data can be accessed from other data sources online. If you need help with this, contact E. Richmond or S. Koslovsky.
 
-#### Backup Procedures
+### Backup Procedures
 
 All data copied to the network are backed up offsite in one of two ways: snap-mirrored to another NMFS facility, tape backup delivered off site (reserved for large files that change infrequently (e.g. imagery, acoustic files, video). In addition, any data that are snap-mirrored are also backed up differentially and that allows incremental restoration (daily for 7 days, weekly for 6 months).
 
 For many small datasets, storing the data on the AFSC network will suffice. For data that are larger or are the result of significant time, effort, or money, a more robust archival system is desirable. For NOAA environmental data, the [National Centers for Environmental Information](https://www.ncei.noaa.gov/) (NCEI) provides this capability. The data submission process is handled through the [Send2NCEI](https://www.nodc.noaa.gov/s2n/) (aka S2N) application. Very large datasets (100s of gigabytes to terabytes) will require additional coordination with NCEI data liaisons (NODC.DataOfficer\@noaa.gov).
 
-### Analysis and Interpretation
+## Analysis and Interpretation
 
 Part of the data workflow is to ensure the final products are easily usable and accessible for analyses. Accessing data for each analysis will be different; work with S. Koslovsky to identify the most efficient way to extract data from the DB and/or network for your needs.
 
 Further, we want to emphasize the feedback loop from analytical processes to data management. Our goal with data management is to streamline processing and extraction of information for analyses. This may be updates/improvements to data management processes over time. Feedback and communication are important for ensuring data products meet current and future analytical needs.
 
-### Products
+## Products
 
 Data are considered final when a project is completed (e.g., CHESS) or when the annual data processing for a project (e.g., harbor seal surveys) is completed. After data are processed and considered final, S. Koslovsky will notify PI and data sharing staff to prepare final datasets for archive and distribution (when appropriate).
 
-#### Overall Workflow
+### Overall Workflow
 
-\[INSERT FIGURE HERE\]
+![](docs/PEP_DataMgmtPlan_files/images/FinalDataWorkflow.png){fig-align="center"}
 
-#### Metadata
+### Metadata
 
 NOAA Fisheries requires that all data collected be documented within the official NOAA Fisheries metadata repository, [InPort](https://inport.nmfs.noaa.gov/inport). InPort provides an extensive suite of tools for editing and managing metadata. Consult with appropriate staff (TBD) to establish a metadata plan and to get started with InPort. However, responsibility for creating, editing, and maintaining InPort records lies with the project leads. Because these records will be available to the public and, in many cases, represent the authoritative documentation of the data set, project leads should devote an appropriate amount of time and thought to development of metadata records.
 
 \[ADD NEW STEPS FOR WORKING WITH CYNTHIA TO WRITE NEW METADATA RECORDS\]
 
-#### Online Repositories
+### Online Repositories
 
 Much of the data collected and processed as part of PEP research activities is intended for public release, either in compliance with NOAA policies (e.g. Public Access to Research Results \[PARR\]) or in support of best practices related to open science and reproducible research. Keeping track of the evolving policies and expanding tools/repositories available can be challenging. Here, we outline our plan for the use of available repositories.
 
 If you are publishing a manuscript and the journal requires the data to be provided on an open data portal, work with S. Koslovsky to identify the most appropriate repository and to ensure metadata are created.
 
-## R Package: pepDataConnect
+# R Package: pepDataConnect
+
+There are of tables (and linkages among them) in PEP database, and this can be overwhelming to learn and can lead to potential issues in how data are linked together or extracted from the DB. The pepDataConnect R package was created to easily connect PEP staff to the database and to ensure the quality of the data being retrieved. The R code snippet below will guide you through the process of installing the R package and an example of code to get a data table from the DB. There is *extensive* documentation in the
 
 ``` r
 # Getting started with pepDataConnect
@@ -158,3 +160,60 @@ con <- pepDataConnect::pep_connect()
 # To load data into your R workspace, use one of the table functions
 data <- pepDataConnect::surv_jobss.tbl_detections_processed_ir(con)
 ```
+
+Currently, the pepDataConnect R package has been set-up to interact with the database for the following schemas:
+
+-   Coastal harbor seal survey data (surv_pv_cst)
+
+-   JoBSS ice seal survey (surv_jobss)
+
+Other schemas will slowly be added to the R package and
+
+# Data Management On-boarding
+
+## Familiarity with Network Spaces
+
+### Google Ecosystem
+
+We have a centralized Google Drive (tied to a generic email account) that serves as our program [Google Drive repository](https://drive.google.com/drive/folders/1XMadJkz4AqgHctLn0U2xnVChSjHxnyjb).
+
+### Network Resources
+
+We store our files in a variety of locations on the AFSC internal network:
+
+-   \\\\akc0ss-n086\\NMML_Polar
+
+-   \\\\akc0ss-n086\\NMML_Polar_Imagery
+
+-   \\\\akc0ss-n086\\NMML_Polar_Imagery_2
+
+-   \\\\akc0ss-n086\\NMML_Polar_Imagery_3
+
+-   \\\\akc0ss-n086\\NMML_CHESS_Imagery
+
+## Minimum Computer Requirements
+
+Below is a list of software required for PEP computers.
+
+| Program                       | Justification                                                                                                     |
+|--------------------|----------------------------------------------------|
+| QGIS                          | For the most direct connection to PEP database for spatial data                                                   |
+| ArcGIS Pro                    | Some preference for Arc version?                                                                                  |
+| 64-bit PostgreSQL ODBC driver | For connecting to PEP database via Microsoft Access                                                               |
+| Microsoft Access 2016         | For using PEP database front-ends (this is part of the Microsoft Suite, so might already be installed by default) |
+| EndNote                       | For accessing the PEP library                                                                                     |
+| ACDSee                        | For image management (field photos and data); we also have licenses for Lightroom                                 |
+| VLC Media Player          | For video management                                                                                              |
+| Adobe Acrobat                 | For managing data and forms stored in pdf                                                                         |
+
+: Required software for PEP computers.
+
+Below is a list of software recommended for PEP computers.
+
+| Program                                   | Justification                                  |
+|--------------------------------|----------------------------------------|
+| Anaconda(or miniconda) with Python\>=3.6  | Lots of our tools require Python               |
+| R                                         | Lots of our tools require R (and kept updated) |
+| RStudio (no more than one release behind) | A user-friendly GUI for R                      |
+
+: Recommended software for PEP computers.

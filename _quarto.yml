@@ -1,3 +1,11 @@
 project:
   type: website
   output-dir: docs
+website:
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+        - section: "Data Management Plan"
+            contents:
+                - PEP_DataMgmtPlan.qmd

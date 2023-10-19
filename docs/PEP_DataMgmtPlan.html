@@ -87,6 +87,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -124,12 +125,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating fullcontent">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">PEP Data Management Plan</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+</nav>
 <!-- margin-sidebar -->
     
 <!-- main -->
@@ -137,7 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PEP Data Management Plan</h1>
+<h1 class="title d-none d-lg-block">PEP Data Management Plan</h1>
 </div>
 
 
@@ -152,12 +170,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="objective" class="level2">
-<h2 class="anchored" data-anchor-id="objective">Objective</h2>
+<section id="objective" class="level1">
+<h1>Objective</h1>
 <p>To outline and implement consistent information management procedures for PEP data.</p>
 </section>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="overview" class="level1">
+<h1>Overview</h1>
 <p>Data are our legacy. The data we collect, manage and analyze today will continue to be available and used by staff in the future. It is, therefore, important to maintain, organize and share our data in a way that will be useful and meaningful to current and future users. This includes:</p>
 <ul>
 <li><p>Keeping files organized and up-to-date;</p></li>
@@ -165,8 +183,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Cleaning out files (and paperwork) that are not important for the future legacy of the data (e.g.&nbsp;intermediate files, outdated information); and</p></li>
 <li><p>Sharing data with the public and interested partners.</p></li>
 </ul>
-<section id="foundations-to-data-management" class="level3">
-<h3 class="anchored" data-anchor-id="foundations-to-data-management">Foundations to Data Management</h3>
+<section id="foundations-to-data-management" class="level2">
+<h2 class="anchored" data-anchor-id="foundations-to-data-management">Foundations to Data Management</h2>
 <p>A recently published paper in PLOS ONE, <a href="https://arxiv.org/pdf/1609.00037.pdf">Good Enough Practices in Scientific Computing</a>, provides a thorough overview of best practices and workflows for managing scientific data. While much of the focus is maybe out of our scope and focuses more on scientific computing, a few key principles in the data management section are worth focusing on:</p>
 <ol type="1">
 <li><p><strong>Create the data you wish to see in the world</strong>. The original, raw data collected in the field or offloaded from sensors is rarely the data type and quality of data we would like to share with the world and have our names associated with. Data formats, data organization, column names, value data types and formats (e.g.&nbsp;date-time) can all be transformed and improved into higher quality forms. The better formed the data are, the easier subsequent analyses will be, the more reproducible our science will be, and the more likely it is that others will find use in our data.</p></li>
@@ -180,14 +198,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong>Record all the steps used to process data</strong>. Embracing scripts developed in a programming language (such as R or Python) is essential to providing a robust, reproducible workflow for your data. With large, complex datasets, manually processing data via mouse clicks and Excel or Google Sheets centric workflows are often time-consuming and difficult to reproduce. As part of the planning process for the PEP data management workflow, we will evaluate existing data management processes and identify ways to simplify and automate existing or new steps.</p></li>
 </ol>
 </section>
-</section>
 <section id="data-management-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="data-management-workflow">Data Management Workflow</h2>
 <p>The figure below describes the general process that PEP will implement for managing data, start to finish. We will ultimately create a Google Drive spreadsheet that inventories the status of each project related to each of the steps in the process and associated details about the data (e.g.&nbsp;where it is stored, where it is shared).</p>
 <p>[INSERT FIGURE HERE]</p>
 <p>**For projects that have already started or are just getting started, we will take steps to update data management and products as outlined in this document.</p>
-<section id="planning-and-design" class="level3">
-<h3 class="anchored" data-anchor-id="planning-and-design">Planning and Design</h3>
+</section>
+<section id="planning-and-design" class="level2">
+<h2 class="anchored" data-anchor-id="planning-and-design">Planning and Design</h2>
 <p>The <a href="https://nosc.noaa.gov/EDMC/PD.DMP.php">NOAA Data Management Planning Procedural Directive</a> (PD) (<a href="https://nosc.noaa.gov/EDMC/documents/EDMC-PD-DMP-2.0.1.pdf">direct link</a> to PDF of current version 2.0.1) requires a data management plan to be developed for all environmental data collected by NOAA programs or systems. The PD provides a generic template and guideline for developing a data management plan and a <a href="https://drive.google.com/drive/u/0/folders/0Bwl6f-PNVtnndG0yOUJ5cGU0RGs">data management plan repository</a> has been established. A common tool for developing data management plans (<a href="https://dmptool.org" class="uri">https://dmptool.org</a>) has a template for NOAA. These represent a minimum requirement and, in fact, PEP data management plans will likely be more thorough. All data management plans should be developed in collaboration with the PEP data science lead (Stacie Koslovsky) and established prior to data collection.</p>
 <p>Prior to any new data collection, work with S. Koslovsky to:</p>
 <ul>
@@ -199,11 +217,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Decide how best to organize the metadata for the project (parent vs.&nbsp;child, new vs.&nbsp;add to existing). All metadata entries within InPort will be published publicly and, eventually, used to create standards compliant alongside any open data products. A one-to-one relationship between metadata records and eventual open data products often makes this process easier.</p></li>
 </ul>
 </section>
-<section id="data-management" class="level3">
-<h3 class="anchored" data-anchor-id="data-management">Data Management</h3>
+<section id="data-management" class="level2">
+<h2 class="anchored" data-anchor-id="data-management">Data Management</h2>
 <p>After field work is completed, our aim will be to download, process and QA/QC data as soon as possible. All data should be archived to the network no later than <strong>one month</strong> after the completion of the project.</p>
-<section id="field-data-collection" class="level4">
-<h4 class="anchored" data-anchor-id="field-data-collection">Field Data Collection</h4>
+<section id="field-data-collection" class="level3">
+<h3 class="anchored" data-anchor-id="field-data-collection">Field Data Collection</h3>
 <p>During field data collection, begin preliminary data management, as able:</p>
 <ul>
 <li><p>Review datasheets for data recording errors;</p></li>
@@ -212,8 +230,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Enter field data into cloud-based data entry tools.</p></li>
 </ul>
 </section>
-<section id="raw-and-original-data" class="level4">
-<h4 class="anchored" data-anchor-id="raw-and-original-data">Raw and Original Data</h4>
+<section id="raw-and-original-data" class="level3">
+<h3 class="anchored" data-anchor-id="raw-and-original-data">Raw and Original Data</h3>
 <p>The AFSC’s network will be the primary storage location for all environmental data collected by PEP (see more details in Section 5: PEP Network Folder Structure).</p>
 <ul>
 <li><p>In practice, the transfer of data from field collection storage to the network should be the first priority upon returning from the field. Temporary storage of files on external/portable drives, cloud providers, individual government laptops should not exceed 30 days after return from the field</p></li>
@@ -224,8 +242,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Additionally, data transcription errors can occur, and this is the appropriate time to fix those errors.</p></li>
 </ul>
 </section>
-<section id="processed-and-final-data" class="level4">
-<h4 class="anchored" data-anchor-id="processed-and-final-data">Processed and Final Data</h4>
+<section id="processed-and-final-data" class="level3">
+<h3 class="anchored" data-anchor-id="processed-and-final-data">Processed and Final Data</h3>
 <p>After raw/original data are archived to the network, data should be processed and reviewed for outliers. The processing and review steps will vary by project, but generally:</p>
 <ul>
 <li><p>We will use automated processes for streamlining and documenting processes whenever possible.</p></li>
@@ -239,38 +257,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Environmental data will be updated in the pep DB annually in August. Additional environmental data can be accessed from other data sources online. If you need help with this, contact E. Richmond or S. Koslovsky.</p></li>
 </ul>
 </section>
-<section id="backup-procedures" class="level4">
-<h4 class="anchored" data-anchor-id="backup-procedures">Backup Procedures</h4>
+<section id="backup-procedures" class="level3">
+<h3 class="anchored" data-anchor-id="backup-procedures">Backup Procedures</h3>
 <p>All data copied to the network are backed up offsite in one of two ways: snap-mirrored to another NMFS facility, tape backup delivered off site (reserved for large files that change infrequently (e.g.&nbsp;imagery, acoustic files, video). In addition, any data that are snap-mirrored are also backed up differentially and that allows incremental restoration (daily for 7 days, weekly for 6 months).</p>
 <p>For many small datasets, storing the data on the AFSC network will suffice. For data that are larger or are the result of significant time, effort, or money, a more robust archival system is desirable. For NOAA environmental data, the <a href="https://www.ncei.noaa.gov/">National Centers for Environmental Information</a> (NCEI) provides this capability. The data submission process is handled through the <a href="https://www.nodc.noaa.gov/s2n/">Send2NCEI</a> (aka S2N) application. Very large datasets (100s of gigabytes to terabytes) will require additional coordination with NCEI data liaisons (NODC.DataOfficer@noaa.gov).</p>
 </section>
 </section>
-<section id="analysis-and-interpretation" class="level3">
-<h3 class="anchored" data-anchor-id="analysis-and-interpretation">Analysis and Interpretation</h3>
+<section id="analysis-and-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-and-interpretation">Analysis and Interpretation</h2>
 <p>Part of the data workflow is to ensure the final products are easily usable and accessible for analyses. Accessing data for each analysis will be different; work with S. Koslovsky to identify the most efficient way to extract data from the DB and/or network for your needs.</p>
 <p>Further, we want to emphasize the feedback loop from analytical processes to data management. Our goal with data management is to streamline processing and extraction of information for analyses. This may be updates/improvements to data management processes over time. Feedback and communication are important for ensuring data products meet current and future analytical needs.</p>
 </section>
-<section id="products" class="level3">
-<h3 class="anchored" data-anchor-id="products">Products</h3>
+<section id="products" class="level2">
+<h2 class="anchored" data-anchor-id="products">Products</h2>
 <p>Data are considered final when a project is completed (e.g., CHESS) or when the annual data processing for a project (e.g., harbor seal surveys) is completed. After data are processed and considered final, S. Koslovsky will notify PI and data sharing staff to prepare final datasets for archive and distribution (when appropriate).</p>
-<section id="overall-workflow" class="level4">
-<h4 class="anchored" data-anchor-id="overall-workflow">Overall Workflow</h4>
+<section id="overall-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="overall-workflow">Overall Workflow</h3>
 <p>[INSERT FIGURE HERE]</p>
 </section>
-<section id="metadata" class="level4">
-<h4 class="anchored" data-anchor-id="metadata">Metadata</h4>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
 <p>NOAA Fisheries requires that all data collected be documented within the official NOAA Fisheries metadata repository, <a href="https://inport.nmfs.noaa.gov/inport">InPort</a>. InPort provides an extensive suite of tools for editing and managing metadata. Consult with appropriate staff (TBD) to establish a metadata plan and to get started with InPort. However, responsibility for creating, editing, and maintaining InPort records lies with the project leads. Because these records will be available to the public and, in many cases, represent the authoritative documentation of the data set, project leads should devote an appropriate amount of time and thought to development of metadata records.</p>
 <p>[ADD NEW STEPS FOR WORKING WITH CYNTHIA TO WRITE NEW METADATA RECORDS]</p>
 </section>
-<section id="online-repositories" class="level4">
-<h4 class="anchored" data-anchor-id="online-repositories">Online Repositories</h4>
+<section id="online-repositories" class="level3">
+<h3 class="anchored" data-anchor-id="online-repositories">Online Repositories</h3>
 <p>Much of the data collected and processed as part of PEP research activities is intended for public release, either in compliance with NOAA policies (e.g.&nbsp;Public Access to Research Results [PARR]) or in support of best practices related to open science and reproducible research. Keeping track of the evolving policies and expanding tools/repositories available can be challenging. Here, we outline our plan for the use of available repositories.</p>
 <p>If you are publishing a manuscript and the journal requires the data to be provided on an open data portal, work with S. Koslovsky to identify the most appropriate repository and to ensure metadata are created.</p>
 </section>
 </section>
 </section>
-<section id="r-package-pepdataconnect" class="level2">
-<h2 class="anchored" data-anchor-id="r-package-pepdataconnect">R Package: pepDataConnect</h2>
+<section id="r-package-pepdataconnect" class="level1">
+<h1>R Package: pepDataConnect</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting started with pepDataConnect</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'staciekoslovsky-noaa/pepDataConnect'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -279,8 +297,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># To load data into your R workspace, use one of the table functions</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> pepDataConnect<span class="sc">::</span><span class="fu">surv_jobss.tbl_detections_processed_ir</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="data-management-onboarding" class="level1">
+<h1>Data Management Onboarding</h1>
+<section id="familiarity-with-network-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="familiarity-with-network-spaces">Familiarity with Network Spaces</h2>
+<p>Polar Polar_Imagery Polar_Imagery_2 Polar_Imagery_3</p>
+</section>
+<section id="minimum-computer-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="minimum-computer-requirements">Minimum Computer Requirements</h2>
+<p>Below is a list of software required for PEP computers.</p>
+<table class="table">
+<caption>Required software for PEP computers.</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Program</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>QGIS</td>
+<td>For the most direct connection to PEP database for spatial data</td>
+</tr>
+<tr class="even">
+<td>ArcGIS Pro</td>
+<td>Some preference for Arc version?</td>
+</tr>
+<tr class="odd">
+<td>64-bit PostgreSQL ODBC driver</td>
+<td>For connecting to PEP database via Microsoft Access</td>
+</tr>
+<tr class="even">
+<td>Microsoft Access 2016</td>
+<td>For using PEP database front-ends (this is part of the Microsoft Suite, so might already be installed by default)</td>
+</tr>
+<tr class="odd">
+<td>EndNote</td>
+<td>For accessing the PEP library</td>
+</tr>
+<tr class="even">
+<td>ACDSee</td>
+<td>For image management (field photos and data); we also have licenses for Lightroom</td>
+</tr>
+<tr class="odd">
+<td>VLC Media Player</td>
+<td>For video management</td>
+</tr>
+<tr class="even">
+<td>Adobe Acrobat</td>
+<td>For managing data and forms stored in pdf</td>
+</tr>
+</tbody>
+</table>
+<p>Below is a list of software recommended for PEP computers.</p>
+<table class="table">
+<caption>Recommended software for PEP computers.</caption>
+<colgroup>
+<col style="width: 44%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Program</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Anaconda(or miniconda) with Python&gt;=3.6</td>
+<td>Lots of our tools require Python</td>
+</tr>
+<tr class="even">
+<td>R</td>
+<td>Lots of our tools require R (and kept updated)</td>
+</tr>
+<tr class="odd">
+<td>RStudio (no more than one release behind)</td>
+<td>A user-friendly GUI for R</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
