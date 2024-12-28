@@ -1,9 +1,14 @@
 ---
 title: "PEP Data Management Plan"
+author: "Stacie Koslovsky"
 toc: true
 theme: superhero
 format: html
 ---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
 
 This document was last updated on `r Sys.Date()`.
 
@@ -27,7 +32,7 @@ Data are our legacy. The data we collect, manage and analyze today will continue
 
 ## Foundations to Data Management
 
-A recently published paper in PLOS ONE, [Good Enough Practices in Scientific Computing](https://arxiv.org/pdf/1609.00037.pdf), provides a thorough overview of best practices and workflows for managing scientific data. While some of the focus is out of our scope, a few key principles in the data management section are worth focusing on:
+A recently-ish published paper in PLOS ONE, [Good Enough Practices in Scientific Computing](https://arxiv.org/pdf/1609.00037.pdf), provides a thorough overview of best practices and workflows for managing scientific data. While some of the focus is out of our scope, a few key principles in the data management section are worth focusing on:
 
 1.  **Create the data you wish to see in the world**. The original, raw data collected in the field or offloaded from sensors is rarely the data type and quality of data we would like to share with the world and have our names associated with. Data formats, data organization, column names, value data types and formats (e.g. date-time) can all be transformed and improved into higher quality forms. The better formed the data are, the easier subsequent analyses will be, the more reproducible our science will be, and the more likely it is that others will find use in our data.
 
@@ -45,61 +50,140 @@ A recently published paper in PLOS ONE, [Good Enough Practices in Scientific Com
 
 3.  **Record all the steps used to process data**. Embracing scripts developed in a programming language (such as R or Python) is essential to providing a robust, reproducible workflow for your data. With large, complex datasets, manually processing data via mouse clicks and spreadsheet-centric workflows are often time-consuming and difficult to reproduce. As part of the planning process for the PEP data management workflow, we will evaluate existing data management processes and identify ways to simplify and automate existing or new steps.
 
-## Data Management Workflow
+## General Guidelines
 
-The figure below describes the general process that PEP will implement for managing data, start to finish and cyclically for on-going projects. This workflow consists of 7 steps, some of which occur concurrently or similarly timed yet independent of one another.
+**Create folders with a top-down hierarchy**, i.e. folders should get more specific as you get deeper into folder organization. This will make long-term organization more efficient, will consolidate files to a layout that will be easy for others to interpret, and will improve information transfer among staff.
 
-~~We will ultimately create a Google Drive spreadsheet that inventories the status of each project related to each of the steps in the process and associated details about the data (e.g. where it is stored, where it is shared).~~
+**Create and maintain metadata documentation for your files**. These can be shorter documents describing the files within a specific folder or longer documents describing the work that went into creating each of the files. The complexity of each file/folder dictates the level of detail that should be documented in the metadata. This level of metadata can be most simply managed using a word document or a text file.
+
+**Copy files…do not drag-and-drop**. When you need to move files on the network or your computer, move them by either copying the files to the new location and deleting the files from the old location or cutting and pasting from the old location to the new location (either option instead of drag-and-drop). Use batch processing whenever dealing with large volumes of data (example link to SMK code for this in R).
+
+## File Naming Conventions
+
+Name and organize your files in such a way that you know what they mean at 3 am (or in a crunch)!
+
+### Three Principles for File Naming
+
+-   **Human readable**
+
+    -   File names are easy to understand by anyone, not just you. ☺
+
+    -   Using versioning (when appropriate) to track different versions of your files (dates are a great way to do this).
+
+    -   Keep file names as short as possible.
+
+-   **Machine readable**
+
+    -   Avoid spaces, punctuation, accented characters.
+
+    -   Case-sensitivity!
+
+    -   Deliberately use of delimiters (e.g.\_ - .) instead of spaces.
+
+-   **Orders logically**
+
+    -   Name files from most general to most specific, so similar items cluster together when sorted by name and are easy to read (e.g. HarborSeal_Locations and HarborSeal_Polygons).
+
+    -   YYYY-MM-DD sorts better than DD-MMM-YYYY.
+
+    -   Use leading zeroes! (e.g. 01, 02, 10 – instead of 1, 2, 10).
+
+### File Naming Examples
+
+| Not-so-good           | Improved File Name         |
+|-----------------------|----------------------------|
+| Plan 1.docx           | DataMgmtPlan_20170825.docx |
+| Why won’t this work.R | CHESS_DataImport.R         |
+| Asdfasdf.jpg          | Figure01.jpg               |
+| New.pdf               | ActivityPlan_20170815.pdf  |
+| NewFinal.pdf          | ActivityPlan_20170818.pdf  |
+| NewFinalFinal.pdf     | ActivityPlan_20170822.pdf  |
+
+# DEIAB in PEP Data Management
+
+Data management *might seem* beyond the scope of DEIA, but there are important considerations that can be applied to data-related work. DEIAB stands for Diversity, Equity, Inclusivity, Accessibility, and Belonging.
+
+-   **Diversity** celebrates our different skills, technical abilities, ideas, backgrounds, and ways of learning (among many other things). It is my intent to approach data management application and training in our program with this in mind. Our jobs and how we interact with data are also diverse; different people will have different needs and different applications for the data we collect and maintain.
+
+-   **Equity**, [from the World Economic Forum](https://www3.weforum.org/docs/WEF_Advancing_Data_Equity_2024.pdf), "is a shared responsibility that requires collective action to create data practices and systems that promote fair and just outcomes for all. ... By considering data equity throughout the data life cycle, data practices can be improved to promote fair, just and beneficial outcomes for all individuals, groups and communities."
+
+-   **Inclusivity** is "the practice of ensuring that data collection, storage, and analysis processes actively consider and represent diverse perspectives, experiences, and identities, preventing the exclusion of marginalized groups and promoting equitable representation across all datasets, ultimately leading to more accurate and comprehensive insights." While we don't have to consider inclusivity when it comes to seals, we do have to consider inclusivity with respect to the people who are collecting, managing and using the data. Some considerations include:
+
+    -   Developing inclusive data collection protocols: design surveys and data gathering methods that are accessible.
+
+    -   Implementing data governance practices: establish clear guidelines for collecting, storing, and using data. While this document is a blueprint for program projects, it does not replace the need for this to be considered and applied on a project-by-project basis.
+
+-   **Accessibility** - the data and the information about the data need to be accessible. This document (plus other efforts, like PEP Data Days) are intended to make information as accessible as possible for the diversity of needs and users within our program.
+
+-   **Belonging** is "the feeling of being accepted and supported in a group, community, or organization". Ultimately, it is my goal that everyone feels like they have access to the information they need and are getting the support that is required. This is a two-way street between project and data management.
+
+# Data Management Workflow
+
+The figure below describes the general process that PEP uses for managing data, start to finish and cyclically for on-going projects. This workflow consists of eight steps, some of which occur concurrently or similarly timed yet independent of one another.
 
 ![](docs/PEP_DataMgmtPlan_files/images/DataManagementWorkflow.png){fig-align="center"}
 
-\*\*For projects that have already started or are just getting started, we will take steps to update data management and products as outlined in this document.
+## Plan
 
-### Plan
+<details>
 
-The [NOAA Data Management Planning Procedural Directive](https://nosc.noaa.gov/EDMC/PD.DMP.php) (PD) ([direct link](https://nosc.noaa.gov/EDMC/documents/EDMC-PD-DMP-2.0.1.pdf) to PDF of current version 2.0.1) requires a data management plan to be developed for all environmental data collected by NOAA programs or systems. The PD provides a generic template and guideline for developing a data management plan and a [data management plan repository](https://drive.google.com/drive/u/0/folders/0Bwl6f-PNVtnndG0yOUJ5cGU0RGs) has been established. A common tool for developing data management plans (<https://dmptool.org>) has a template for NOAA. These represent a minimum requirement and, in fact, PEP data management plans will likely be more thorough. All data management plans should be developed in collaboration with the PEP data science lead (Stacie Koslovsky) and established prior to data collection.
+<summary>Click to Expand</summary>
 
-Prior to any new data collection, work with S. Koslovsky to:
+Planning is crucial for the success of any project for all components of the work, including future data management. Early data management efforts can pay in dividends later by establishing clear roles, responsibilities, expectations and timelines. Prior to any new data collection, work with S. Koslovsky to:
 
--   Complete and submit a data management plan;
+-   Identify where data will be stored (both short- and long-term; and set up the workspace), what data products will be needed, and what data processing will be required.
 
--   Identify where data will be stored (both short- and long-term; and set up the workspace), what data products will be needed, and what data processing will be required;
+-   Create storage locations on network for final data and on Google Drive/elsewhere for intermediate processing; ensure necessary staff have access to these locations.
 
--   Create storage locations on network for final data and on Google Drive/elsewhere for intermediate processing; ensure necessary staff have access to these locations;
+-   Develop/evaluate/implement data collection strategies that facilitate and simplify data management steps that follow (e.g. datasheets, in-field data entry, in-field archive efforts).
 
--   Develop/evaluate/implement data collection strategies that facilitate and simplify data management steps that follow;
+-   Coordinate (or at least communicate) with the AFSC OFIS team regarding network storage space needs and any other concerns.
 
--   Coordinate (or at least communicate) with the AFSC OFIS team regarding network storage space needs and any other concerns;
+-   Decide how best to organize the metadata for the project. All metadata entries within InPort will be published publicly and, eventually, used to create standards compliant alongside any open data products. A one-to-one relationship between metadata records and eventual open data products often makes this process easier.
 
--   Decide how best to organize the metadata for the project (parent vs. child, new vs. add to existing). All metadata entries within InPort will be published publicly and, eventually, used to create standards compliant alongside any open data products. A one-to-one relationship between metadata records and eventual open data products often makes this process easier.
+The [NOAA Data Management Planning Procedural Directive](https://nosc.noaa.gov/EDMC/PD.DMP.php) (PD) ([direct link](https://nosc.noaa.gov/EDMC/documents/EDMC-PD-DMP-2.0.1.pdf) to PDF of current version 2.0.1) requires a data management plan to be developed for all environmental data collected by NOAA programs or systems. The PD provides a generic template and guideline for developing a data management plan and a [data management plan repository](https://drive.google.com/drive/u/0/folders/0Bwl6f-PNVtnndG0yOUJ5cGU0RGs) has been established. A common tool for developing data management plans (<https://dmptool.org>) has a template for NOAA. These represent a minimum requirement and, in fact, PEP data management plans will likely be more thorough. All data management plans should be developed in collaboration with the PEP data science lead (Stacie Koslovsky) and established prior to data collection. Work with S. Koslovsky to complete and submit a data management plan (as appropriate).
 
-### Integrate
+## Integrate
 
-For on-going projects, we will incorporate feedback from the previous year's/season's effort to make improvements to the upcoming effort.
+<details>
 
-### Collect
+<summary>Click to Expand</summary>
 
-#### Field Data Collection
+For on-going projects, we will incorporate feedback from the previous year's/season's effort to make improvements to the upcoming effort. For new projects, this might include considering lessons learned from other projects.
+
+## Collect
+
+<details>
+
+<summary>Click to Expand</summary>
+
+It is critical to have clear instructions and expectations for how data are collected. It is also important to consider how to handle and/or document deviations from planned data collection – which are bound to happen!
+
+### Field Data Collection
 
 During field data collection, begin preliminary data management, as able:
 
--   Review datasheets for data recording errors;
+-   Review datasheets for data recording errors.
 
--   Scan datasheets for backup;
+-   Scan datasheets for backup.
 
--   Use temporary storage on external/portable drives, cloud providers, or individual government laptops to backup images, scanned datasheets and other critical files; and
+-   Use temporary storage on external/portable drives, cloud providers, or individual government laptops to backup images, scanned datasheets and other critical files.
 
 -   Enter field data into cloud-based data entry tools.
 
-### Process
+## Process
+
+<details>
+
+<summary>Click to Expand</summary>
 
 After field work is completed, our aim will be to download, process and QA/QC data as soon as possible. All data should be archived to the network no later than **one month** after the completion of the project.
 
-#### Raw and Original Data
+### Raw and Original Data
 
-The AFSC network is the primary storage location for all data collected by PEP (see more details in PEP Network Folder Structure).
+The AFSC network (LAN) is the primary storage location for all data collected by PEP.
 
--   In practice, the transfer of data from field collection storage to the network should be the first priority upon returning from the field. Temporary storage of files on external/portable drives, cloud providers, individual government laptops should not exceed 30 days after return from the field
+-   In practice, the transfer of data from field collection storage to the network should be the first priority upon returning from the field. Temporary storage of files on external/portable drives, cloud providers, individual government laptops should not exceed 30 days after return from the field.
 
 -   After data are transferred to the network, files and associated information should be reviewed for consistency.
 
@@ -111,7 +195,7 @@ The AFSC network is the primary storage location for all data collected by PEP (
 
 -   Additionally, data transcription errors can occur, and this is the appropriate time to fix those errors.
 
-#### Processed and Final Data
+### Processed and Final Data
 
 After raw/original data are archived to the network, data should be processed and reviewed for outliers. Data entry and QA/QC should be processed and finalized **within three months** of the field effort, so that other efforts (e.g. image review, counting) are able to proceed in a timely manner.
 
@@ -131,85 +215,154 @@ The processing and review steps will vary by project, but generally:
 
 -   Environmental data will be updated in the pep DB annually in August. Additional environmental data can be accessed from other data sources online. If you need help with this, contact E. Richmond or S. Koslovsky.
 
-#### Backup Procedures
+### Backup Procedures
 
-~~All data copied to the network are backed up offsite in one of two ways: snap-mirrored to another NMFS facility, tape backup delivered off site (reserved for large files that change infrequently (e.g. imagery, acoustic files, video). In addition, any data that are snap-mirrored are also backed up differentially and that allows incremental restoration (daily for 7 days, weekly for 6 months).~~
+All data copied to the network are backed up offsite in one of two ways: snap-mirrored to another NMFS facility, tape backup delivered off site (reserved for large files that change infrequently (e.g. imagery, acoustic files, video). In addition, any data that are snap-mirrored are also backed up differentially and that allows incremental restoration (daily for 7 days, weekly for 6 months).
 
-~~For many small datasets, storing the data on the AFSC network will suffice. For data that are larger or are the result of significant time, effort, or money, a more robust archival system is desirable. For NOAA environmental data, the [National Centers for Environmental Information](https://www.ncei.noaa.gov/) (NCEI) provides this capability. The data submission process is handled through the [Send2NCEI](https://www.nodc.noaa.gov/s2n/) (aka S2N) application. Very large datasets (100s of gigabytes to terabytes) will require additional coordination with NCEI data liaisons (NODC.DataOfficer\@noaa.gov).~~
+## Debrief
 
-### Debrief
+<details>
 
-### Analyze
+<summary>Click to Expand</summary>
+
+After fieldwork is completed, part of the larger project debrief should include time for discussing in-field data collection and management. The general comments and any specific actionable changes uncovered during the debrief should be incorporated into the INTEGRATE step in the next cycle of the data management workflow for that project.
+
+## Analyze
+
+<details>
+
+<summary>Click to Expand</summary>
 
 Part of the data workflow is to ensure the final products are easily usable and accessible for analyses. Accessing data for each analysis will be different; work with S. Koslovsky to identify the most efficient way to extract data from the DB and/or network for your needs.
 
-### Evaluate
+## Evaluate
 
-We want to emphasize the feedback loop from analytical processes to data management. Our goal with data management is to streamline processing and extraction of information for analyses. This may be updates/improvements to data management processes over time. Feedback and communication are important for ensuring data products meet current and future analytical needs.
+<details>
 
-### Share
+<summary>Click to Expand</summary>
 
-Data are considered final when a project is completed (e.g., CHESS) or when the annual data processing for a project (e.g., harbor seal surveys) is completed. After data are processed and considered final, S. Koslovsky will notify PI and data sharing staff to prepare final datasets for archive and distribution (when appropriate).
+We want to emphasize the feedback loop from analytical processes to data management. Our goal with data management is to streamline processing and extraction of information for analyses. This may be updates/improvements to data management processes over time. Feedback and communication are important for ensuring data products meet current and future analytical needs, and this information should be incorporated into the INTEGRATE step in the next cycle of the data management workflow for any related field projects.
 
-#### Overall Workflow
+## Share
+
+<details>
+
+<summary>Click to Expand</summary>
+
+Data are considered final when a project is completed (e.g., ChESS) or when the annual data processing for a project (e.g., harbor seal surveys) is completed. After data are processed and considered final, S. Koslovsky will notify PI and data sharing staff to prepare final datasets for archive and distribution (when appropriate).
+
+### Overall Workflow
 
 ![](docs/PEP_DataMgmtPlan_files/images/FinalDataWorkflow.png){fig-align="center"}
 
-#### Metadata
+### Metadata
 
-NOAA Fisheries requires that all data collected be documented within the official NOAA Fisheries metadata repository, [InPort](https://inport.nmfs.noaa.gov/inport). InPort provides an extensive suite of tools for editing and managing metadata. Consult with appropriate staff (TBD) to establish a metadata plan and to get started with InPort. However, responsibility for creating, editing, and maintaining InPort records lies with the project leads. Because these records will be available to the public and, in many cases, represent the authoritative documentation of the data set, project leads should devote an appropriate amount of time and thought to development of metadata records.
+NOAA Fisheries requires that all data collected be documented within the official NOAA Fisheries metadata repository, [InPort](https://inport.nmfs.noaa.gov/inport). InPort provides an extensive suite of tools for editing and managing metadata. For PEP projects, we will update InPort as follows:
 
-\[ADD NEW STEPS FOR WORKING WITH CYNTHIA TO WRITE NEW METADATA RECORDS\]
+1.  S. Koslovsky and C. Christman will work with project leads to establish a metadata plan and to get started with InPort.
 
-#### Online Repositories
+2.  The project lead will enter the appropriate metadata information into a GoogleForm that will be used to create and maintain program metadata records.
+
+    1.  The responsibility for creating, editing, and maintaining the GoogleForm entries is the responsibility of the project lead. Because these records will be available to the public and, in many cases, represent the authoritative documentation of the data set, project leads should devote an appropriate amount of time and thought to development of metadata records.
+
+    2.  Once the necessary and complete information is entered into the GoogleForm, notify C. Christman.
+
+3.  C. Christman will complete the necessary updates/entries.
+
+For more information on metadata workflow, [review this documentation](https://docs.google.com/document/d/1kmEoKzXjS-O2r-6euBCL7A3We8mfAre3fpcEvytBD84/edit?tab=t.0) and/or contact C. Christman.
+
+### Online Repositories
 
 Much of the data collected and processed as part of PEP research activities is intended for public release, either in compliance with NOAA policies (e.g. Public Access to Research Results \[PARR\]) or in support of best practices related to open science and reproducible research. Keeping track of the evolving policies and expanding tools/repositories available can be challenging. Here, we outline our plan for the use of available repositories.
 
 If you are publishing a manuscript and the journal requires the data to be provided on an open data portal, work with S. Koslovsky to identify the most appropriate repository and to ensure metadata are created.
 
-# DEIA in PEP Data Management
+## DEIAB in Data Management Workflow
 
-# Data Management On-boarding
+Each step in this process is an opportunity to ensure we are achieving DEAIB in our data management practices within our projects. Misses at each step have the potential to introduce delays in processing, to cause staff to feel unwelcome, or to introduce errors.
+
+-   Planning
+
+    -   Is the planning process inclusive (as appropriate)?
+
+-   Integrating
+
+    -   Has feedback from a diversity of staff been incorporated into changes for the upcoming work?
+
+-   Collecting
+
+    -   Are there clear instructions for how data will be collected?
+
+    -   Have staff been trained and are they confident in their ability to collect data?
+
+    -   Are staff comfortable sharing mis-steps or issues with data collection?
+
+-   Processing
+
+    -   Have staff been given the appropriate training for processing data?
+
+    -   Does documentation of processing steps exist? Is it accessible?
+
+    -   Do we have processes in place to reduce process errors, and especially individual responsibility?
+
+-   Debriefing
+
+    -   Are all perspectives being heard?
+
+-   Analyzing
+
+    -   Is the information accessible and appropriate for analysis?
+
+    -   Does the process for retrieving and updating data clear and avoidant of errors?
+
+    -   Is the process for sharing data for an analysis inclusive of a diversity of perspectives? The people who collected the data might have different concerns about how data are analyzed based on their own observations/experiences than the project lead or data lead...
+
+-   Evaluating
+
+    -   Do we have a process for evaluating a dataset and/or analysis that is inclusive of all staff?
+
+-   Sharing
+
+    -   Are we ensuring that our data are accessible from an availability perspective?
+
+    -   Are the data available in a format that is accessible?
+
+    -   Are we ensuring that our data are accessible from an equity perspective? [From the Urban Institute](https://www.urban.org/sites/default/files/2021/06/08/do-no-harm-guide-recommendations.pdf), these are considerations for applying equity awareness in data visualization.
+
+# On-boarding
+
+S. Koslovsky will orient new staff to the general information provided in the PEP Data Management Plan and the specifics detailed within this section. Staff responsible for other program-wide tools (e.g. PEP Dashboard, inventory DB, Zotero) should provide resources/training as needed.
 
 ## Software Requirements and Recommendations
 
+<details>
+
+<summary>Click to Expand</summary>
+
 Below is a list of software required for PEP computers.
 
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------+
 | Program                       | Justification                                                                                                     |
-+===============================+===================================================================================================================+
+|------------------|------------------------------------------------------|
 | QGIS                          | For the most direct connection to PEP database for spatial data                                                   |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------+
 | 64-bit PostgreSQL ODBC driver | For connecting to PEP database via Microsoft Access                                                               |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------+
 | Microsoft Access 2016         | For using PEP database front-ends (this is part of the Microsoft Suite, so might already be installed by default) |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------+
 | EndNote and/or Zotero         | For accessing the PEP library                                                                                     |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------+
 | ACDSee                        | For image management (field photos and data); we also have licenses for Lightroom                                 |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------+
 | Adobe Acrobat                 | For managing data and forms stored in pdf                                                                         |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------+
 
 Below is a list of software recommended for PEP computers.
 
-+------------------------------------------+------------------------------------------------+
 | Program                                  | Justification                                  |
-+==========================================+================================================+
+|----------------------------------|--------------------------------------|
 | Anaconda(or miniconda) with Python\>=3.6 | Lots of our tools require Python               |
-+------------------------------------------+------------------------------------------------+
 | R                                        | Lots of our tools require R (and kept updated) |
-+------------------------------------------+------------------------------------------------+
 | RStudio                                  | A user-friendly GUI for R                      |
-+------------------------------------------+------------------------------------------------+
 | ArcGIS Pro                               | Spatial processing and analysis                |
-+------------------------------------------+------------------------------------------------+
 | VLC Media Player                         | For video management                           |
-+------------------------------------------+------------------------------------------------+
 
 ### Details for ODBC Driver Installation
 
-In order to connect to the DB from Access, you will need to ask IT to update your ODBC Data Sources to allow connection to PostgreSQL. Here's a website for reference: <https://help.interfaceware.com/v6/connect-to-postgresql-from-windows-with-odbc>. The most recent driver from this site: <https://www.postgresql.org/ftp/odbc/versions/msi/> (x64.zip version).
+In order to connect to the DB from Access, you will need to ask IT to update your ODBC Data Sources to allow connection to PostgreSQL. Here's a website for reference: [https://help.interfaceware.com/v6/connect-to-postgresql-from-windows-with-odbc](#0){.uri}. The most recent driver from this site: [https://www.postgresql.org/ftp/odbc/versions/msi/](#0){.uri} (x64.zip version).
 
 The connection details for setting up the PostgreSQL ANSI ODBC connection configured after the driver is installed are in the screenshot below. Just use your own username and password. Once they add PostgreSQL to the System DSN, they can test your connection using an existing Access database by using the "Test" button in the Driver Setup screen.
 
@@ -219,7 +372,13 @@ The connection details for setting up the PostgreSQL ANSI ODBC connection config
 
 ### Individual Storage Resources
 
+<details>
+
+<summary>Click to Expand</summary>
+
 No data should be stored exclusively in any of these resources.
+
+(this section to be completed after PEP Data Days 2025)
 
 #### Laptop
 
@@ -228,6 +387,10 @@ No data should be stored exclusively in any of these resources.
 #### Individual Users folders on LAN
 
 ### Shared Storage Resources
+
+<details>
+
+<summary>Click to Expand</summary>
 
 #### PEP_GoogleDrive
 
@@ -357,6 +520,10 @@ We store our files in a variety of locations on the AFSC internal network:
 
 ### PEP PostgreSQL Database
 
+<details>
+
+<summary>Click to Expand</summary>
+
 #### Overview
 
 The table below details the final data are stored in the pep PostgreSQL database.
@@ -365,53 +532,34 @@ The table below details the final data are stored in the pep PostgreSQL database
 
 -   Staff will only have read-write access to the data they are required to edit.
 
--   There are a number of automated scripts that will replicate and/or process data into their final product. This database should be the go-to location data anytime data are needed. Intermediate copies and/or previous exports should always be replaced to ensure you are using the most up-to-date data.
+-   There are a number of automated scripts that will replicate and/or process data into their final product. This database should be the go-to location data anytime data are needed. **Intermediate copies and/or previous exports should always be replaced to ensure you are using the most up-to-date data.**
 
--   QGIS is the only software we will use for editing spatial data stored in the DB. It will also be used for importing shapefiles to PostGIS. ArcGIS or other GIS software should only be used for viewing spatial data stored in the DB.
+-   QGIS is the only software we will use for editing spatial data stored in the DB. It will also be used for importing shapefiles to PostGIS. ArcGIS or other GIS software should only be used for viewing spatial data stored in the DB or from the pepGeodatabase.
 
 #### Current Schemas
 
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Project**              | **Schema**      | **Status**                                                                                                                                                                                                                                                                                                              |
-+==========================+=================+=========================================================================================================================================================================================================================================================================================================================+
-| **Administrative**       | administrative  | Contains data associated with the PEP Dashboard (activity planning, data tracking, etc.). An Access front-end is available for viewing/editing data.                                                                                                                                                                    |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Annotations**          | annotations     | Contains data associated with application of ML models to imagery; the annotations and imagery data are stored within their project schemas; this schema tracks information related to annotation management. An Access front-end is available for viewing/editing data.                                                |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Base**                 | base            | Contains “THE” grid and environmental covariates extracted to the grid.                                                                                                                                                                                                                                                 |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **UAS Body Condition**   | body_condition  | Contains image, LRF and measurement data related to the UAS body condition data. An Access front-end will be available for viewing/editing data.                                                                                                                                                                        |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Capture**              | capture         | Data have been imported from Excel files, which were exports from the Oracle DB. An Access front-end is available for viewing/editing data.                                                                                                                                                                             |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Environmental**        | environ         | Includes NARR weather data from 2004-2016 and NSIDC CDR sea ice concentration data\*.                                                                                                                                                                                                                                   |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Inventory**            | Inventory       | Contains data for managing PEP gear inventory and field packlists. An Access front-end is available for viewing/editing data.                                                                                                                                                                                           |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Stock**                | stock           | All data have been migrated from pepgeo to this database.                                                                                                                                                                                                                                                               |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **BOSS**                 | surv_boss       | All data from Oracle and from the original FMC logs have been ingested into DB.                                                                                                                                                                                                                                         |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **ChESS**                | surv_chess      | Data are uploaded to DB from CSV files through R script. All imported data have been QA/QC’ed. A final effort trackline is available.                                                                                                                                                                                   |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **JoBSS**                | surv_jobss      | Image data and annotations from 2021 Beaufort Sea Surveys.                                                                                                                                                                                                                                                              |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Ice Seal: Polar Bear** | surv_polar_bear | Image data and annotations from 2019 surveys out of Kotzebue and Deadhorse targeting polar bears.                                                                                                                                                                                                                       |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Harbor Seal:**         | surv_pv_cst     | Image data and counts from 2004-2021 are currently QA/QC’ed and available in the DB. ADF&G, NOAA 1996-1997, NOAA 1998-2002 and NOAA 2003 data are available in the DB. Authoritative Iliamna and Pribilof data are also actively managed within this schema. An Access front-end is available for viewing/editing data. |
-|                          |                 |                                                                                                                                                                                                                                                                                                                         |
-| **Coastal Surveys**      |                 |                                                                                                                                                                                                                                                                                                                         |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Harbor Seal:**         | surv_pv_gla     | Fliight data and counts from surveys are available in the DB. An Access front-end is available for viewing/editing data.                                                                                                                                                                                                |
-|                          |                 |                                                                                                                                                                                                                                                                                                                         |
-| **Glacial Surveys**      |                 |                                                                                                                                                                                                                                                                                                                         |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Ice Seal: Kotz**       | surv_test_kotz  | Image data and annotations from 2019 testing of in-flight system out of Kotzebue. Fight 01 and R camera views should not be used for any AI/ML.                                                                                                                                                                         |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Stock**                | stock           | All data have been migrated from older pepgeo DB.                                                                                                                                                                                                                                                                       |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Telemetry**            | telem           | All field-related telemetry information has been entered into the DB.                                                                                                                                                                                                                                                   |
-+--------------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Project**                      | **Schema**          | **Details**                                                                                                                                                                                                                                                                                                                    |
+|--------------|---------------------|-------------------------------------|
+| **Acoustics**                    | acoustics           | Contains data received from CAEP Acoustics program and pre-processed for import into the DB.                                                                                                                                                                                                                                   |
+| **PEP Dashboard**                | administrative      | Contains data associated with the PEP Dashboard (activity planning, data tracking, etc.). An Access front-end is available for managing data.                                                                                                                                                                                  |
+| **Annotations**                  | annotations         | Contains data associated with application of ML models to imagery; the annotations and imagery data are stored within their project schemas; this schema tracks information related to annotation management. An Access front-end is available for managing data.                                                              |
+| **Base**                         | base                | Contains “THE” grid and environmental covariates extracted to the grid.                                                                                                                                                                                                                                                        |
+| **UAS Body Condition**           | body_condition      | Contains image, LRF and measurement data related to the UAS body condition data. An Access front-end is available for managing data.                                                                                                                                                                                           |
+| **Capture**                      | capture             | Data have been imported from Excel files, which were exports from the Oracle DB. An Access front-end is available for managing data.                                                                                                                                                                                           |
+| **Environmental**                | environ             | Includes NARR weather data from 2004-2016 and NSIDC CDR sea ice concentration data\*.                                                                                                                                                                                                                                          |
+| **Inventory**                    | inventory           | Contains data for managing PEP gear inventory and field packlists. An Access front-end is available for managing data.                                                                                                                                                                                                         |
+| **Species Misclassification**    | species_misclass    | Contains ice seal species misclassification information from across all ice seal survey projects.                                                                                                                                                                                                                              |
+| **Stock**                        | stock               | All data have been migrated from pepgeo to this database.                                                                                                                                                                                                                                                                      |
+| **BOSS**                         | surv_boss           | All data from Oracle and from the original FMC logs have been ingested into DB. An Access front-end is available for viewing/querying data.                                                                                                                                                                                    |
+| **ChESS**                        | surv_chess          | Data are uploaded to DB from CSV files through R script. All imported data have been QA/QC’ed. A final effort trackline is available. An Access front-end is available for viewing/querying data.                                                                                                                              |
+| **Ice Seals: 2024**              | surv_ice_seals_2024 | Image metadata/inventory and annotations from 2024 Ice Seal Surveys (in Bering Sea).                                                                                                                                                                                                                                           |
+| **Ice Seals: 2025**              | surv_ice_seals_2025 | To be created/populated after 2025 surveys.                                                                                                                                                                                                                                                                                    |
+| **JoBSS**                        | surv_jobss          | Image metadata/inventory and annotations from 2021 Beaufort Sea Surveys. An Access front-end is available for viewing/querying data.                                                                                                                                                                                           |
+| **Ice Seal: Polar Bear**         | surv_polar_bear     | Image metadata/inventory and annotations from 2019 surveys out of Kotzebue and Deadhorse targeting polar bears.                                                                                                                                                                                                                |
+| **Harbor Seal: Coastal Surveys** | surv_pv_cst         | Image metadata/inventory and counts from 2004-2021 are currently QA/QC’ed and available in the DB. ADF&G, NOAA 1996-1997, NOAA 1998-2002 and NOAA 2003 data are available in the DB. Authoritative Iliamna and Pribilof data are also actively managed within this schema. An Access front-end is available for managing data. |
+| **Harbor Seal: Glacial Surveys** | surv_pv_gla         | Fliight data and counts from surveys are available in the DB. An Access front-end is available for managing data.                                                                                                                                                                                                              |
+| **Ice Seal: Kotz**               | surv_test_kotz      | Image data and annotations from 2019 testing of in-flight system out of Kotzebue. Fight 01 and R camera views should not be used for any AI/ML.                                                                                                                                                                                |
+| **Telemetry**                    | telem               | All field-related telemetry information has been entered into the DB. Tag inventory and deployment information is managed through the Capture Access front-end.                                                                                                                                                                |
 
 \*The sea ice data stored on the pep database are the CDR and sea ice extent products. The original versions of these datasets are also on the network. In addition to these datasets, the bootstrap and nimbus are also stored on the network. The CDR and sea ice extent should be the go-to sea ice data products, which is why they are processed and available in the pep database.
 
@@ -521,23 +669,12 @@ For viewing tabular data: 
 
 -   You can directly connect to the pep DB using R with the RPostgreSQL package. This connection string will get you started: con \<- dbConnect(PostgreSQL(), dbname = "pep", host = "161.55.120.122", user = "UserName", password = "Password")
 
--   If you need access to or exports of other tabular data from the pep DB, contact S. Hardy.
+-   If you need access to or exports of other tabular data from the pep DB, contact S. Koslovsky.
 
-#### Backup Procedure
-
-The pepDB will be backed up according to the following schedule:
-
--   Daily directory backup: The pep DB will be backed up daily to tape. The last 5 days will also be stored on the VM. 
-
--   Monthly full VM backup: The virtual machine on which the pep DB resides will be fully backed up to tape monthly. The last 3 months will also be stored on the VM.
-
--   The DB backups will be tested every 6 months (March and September) to ensure they are working properly, and data can be restored.
-
-### pepDataConnect (R package)
+##### pepDataConnect (R package)
 
 ```         
-install.packages("devtools")
-devtools::install_github("StacieKoslovsky-noaa/pepDataConnect")
+install.packages("devtools") devtools::install_github("StacieKoslovsky-noaa/pepDataConnect")
 ```
 
 There are of tables (and linkages among them) in PEP database, and this can be overwhelming to learn and can lead to potential issues in how data are linked together or extracted from the DB. The pepDataConnect R package was created to easily connect PEP staff to the database and to ensure the quality of the data being retrieved. The R code snippet below will guide you through the process of installing the R package and an example of code to get a data table from the DB. There is *extensive* documentation in the
@@ -554,86 +691,56 @@ Currently, the pepDataConnect R package has been set-up to interact with the dat
 
 Other schemas will slowly be added to the R package, as prioritized each year
 
+#### Backup Procedure
+
+The pepDB will be backed up according to the following schedule:
+
+-   Daily directory backup: The pep DB will be backed up daily to tape. The last 5 days will also be stored on the VM. 
+
+-   Monthly full VM backup: The virtual machine on which the pep DB resides will be fully backed up to tape monthly. The last 3 months will also be stored on the VM.
+
+The DB backups will be tested every 6 months (March and September) to ensure they are working properly, and data can be restored.
+
 ## Frequently Used Program-wide Tools
+
+<details>
+
+<summary>Click to Expand</summary>
+
+### PEP Dashboard
+
+The PEP dashboard is a schema (administrative) within the PEP PostgreSQL database that is used for tracking the roles of staff on projects and associated timelines and for entering responsibilities into the PAWS performance planning system. For more information:
+
+-   Documentation
+
+-   [Weekly report](https://htmlpreview.github.io/?https://github.com/staciekoslovsky-noaa/PEP_Dashboard/blob/main/SchedulingReport/SchedulingReport.html)
+
+-   Contact M. Cameron
 
 ### Inventory Database
 
+This database is a schema (inventory) within the PEP PostgreSQL database and tracks inventory of gear and supplies used by staff in PEP for projects. For more information:
+
+-   Documentation
+
+-   Contact H. Ziel
+
 ### Extensis Portfolio
+
+Extensis Portfolio is software used for tagging and querying images taken during PEP projects. For more information:
+
+-   Documentation
+
+-   Contact S. Walcott
 
 ### Zotero
 
-### InPort Metadata
+Zotero houses a central library of journal articles, reports and other references. For more information:
 
-# Data Management Off-boarding
+-   Documentation
+
+-   Contact S. Walcott
+
+# Off-boarding
 
 (this section to be completed after PEP Data Days 2025)
-
-# Data Management Guidelines
-
-## General Guidelines
-
-**Create folders with a top-down hierarchy**, i.e. folders should get more specific as you get deeper into folder organization. This will make long-term organization more efficient, will consolidate files to a layout that will be easy for others to interpret, and will improve information transfer among staff.
-
-**Create and maintain metadata documentation for your files**. These can be shorter documents describing the files within a specific folder or longer documents describing the work that went into creating each of the files. The complexity of each file/folder dictates the level of detail that should be documented in the metadata. This level of metadata can be most simply managed using a word document or a text file.
-
-**Copy files…do not drag-and-drop**. When you need to move files on the network or your computer, move them by either copying the files to the new location and deleting the files from the old location or cutting and pasting from the old location to the new location (either option instead of drag-and-drop). Use batch processing whenever dealing with large volumes of data (example link to SMK code for this in R).
-
-## File Naming Conventions
-
-Name and organize your files in such a way that you know what they mean at 3 am (or in a crunch)!
-
-### Three Principles for File Naming
-
--   **Human readable**
-
-    -   File names are easy to understand by anyone, not just you. ☺
-
-    -   Using versioning (when appropriate) to track different versions of your files (dates are a great way to do this).
-
-    -   Keep file names as short as possible.
-
--   **Machine readable**
-
-    -   Avoid spaces, punctuation, accented characters.
-
-    -   Case-sensitivity!
-
-    -   Deliberately use of delimiters (e.g.\_ - .) instead of spaces.
-
--   **Orders logically**
-
-    -   Name files from most general to most specific, so similar items cluster together when sorted by name and are easy to read (e.g. HarborSeal_Locations and HarborSeal_Polygons).
-
-    -   YYYY-MM-DD sorts better than DD-MMM-YYYY.
-
-    -   Use leading zeroes! (e.g. 01, 02, 10 – instead of 1, 2, 10).
-
-### File Naming Examples
-
-**BAD**
-
-Plan 1.docx
-
-Why won’t this work.R
-
-Asdfasdf.jpg
-
-New.pdf
-
-NewFinal.pdf
-
-NewFinalFinal.pdf
-
-**GOOD**
-
-DataMgmtPlan_20170825.docx
-
-CHESS_DataImport.R
-
-Figure01.jpg
-
-ActivityPlan_20170815.pdf
-
-ActivityPlan_20170818.pdf
-
-ActivityPlan_20170822.pd
