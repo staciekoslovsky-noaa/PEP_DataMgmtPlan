@@ -32,12 +32,13 @@ df <- rbind(df, c(2019, 2023, "Ice seal annotation data innovation", "Completed"
 df <- rbind(df, c(2019, 2025, "KAMERA development and data innovation", "On-going", "Ice seals"))
 df <- rbind(df, c(2019, 2022, "Telemetry data innovation", "Completed", "Tag/sample/measure"))
 
-df <- rbind(df, c(2020, 2025, "Glacial Pv migration to KAMERA", "On-going", "Harbor seals"))
+df <- rbind(df, c(2020, 2021, "Glacial Pv migration to KAMERA", "Completed", "Harbor seals"))
 df <- rbind(df, c(2020, 2023, "Species misclassification data innovation", "Completed", "Ice seals"))
 
 df <- rbind(df, c(2021, 2022, "Inventory data renovation", "Completed", "Admin"))
 df <- rbind(df, c(2021, 2022, "PEP Google Drive organization", "Completed", "Admin"))
 df <- rbind(df, c(2021, 2024, "PEP Dashboard innovation", "Completed", "Admin"))
+df <- rbind(df, c(2022, 2025, "Glacial Pv counting renovation", "On-going", "Harbor seals"))
 df <- rbind(df, c(2021, 2022, "Annotation life cycle innovation", "Completed", "Ice seals"))
 df <- rbind(df, c(2021, 2023, "JoBSS data innovation", "Completed", "Ice seals"))
 df <- rbind(df, c(2021, 2024, "Body condition data innovation", "Completed", "Tag/sample/measure"))
@@ -68,7 +69,7 @@ df <- df %>%
                                               ifelse(status == "Now", "deeppink2", "darkgrey")))))
 
 fig <- gg_vistime(df, col.event = "milestone", col.group = "group", col.start = "start_date", col.end = "end_date",
-                  linewidth = 6, optimize_y = FALSE, col.color = "status_colors") +
+                  linewidth = 8, optimize_y = FALSE, col.color = "status_colors") +
     labs(title = "PEP Data Management Milestones",
          x = "Year",
          y = "Milestone") 

@@ -103,9 +103,9 @@ Name and organize your files in such a way that you know what they mean at 3 am 
 
 Data management *might seem* beyond the scope of DEIA, but there are important considerations that can be applied to data-related work. DEIAB stands for Diversity, Equity, Inclusivity, Accessibility, and Belonging.
 
--   **Diversity** celebrates our different skills, technical abilities, ideas, backgrounds, and ways of learning (among many other things). It is my intent to approach data management application and training in our program with this in mind. Our jobs and how we interact with data are also diverse; different people will have different needs and different applications for the data we collect and maintain.
+-   **Diversity** recognizes and appreciates our different skills, technical abilities, ideas, backgrounds, and ways of learning (among many other things). It is my intent to approach data management application and training in our program with this in mind. Our jobs and how we interact with data are also diverse; different people will have different needs and different applications for the data we collect and maintain.
 
--   **Equity**, [from the World Economic Forum](https://www3.weforum.org/docs/WEF_Advancing_Data_Equity_2024.pdf), "is a shared responsibility that requires collective action to create data practices and systems that promote fair and just outcomes for all. ... By considering data equity throughout the data life cycle, data practices can be improved to promote fair, just and beneficial outcomes for all individuals, groups and communities."
+-   **Equity**, [from the World Economic Forum](https://www3.weforum.org/docs/WEF_Advancing_Data_Equity_2024.pdf), "is a shared responsibility that requires collective action to create data practices and systems that promote fair and just outcomes for all. ... By considering data equity throughout the data life cycle, data practices can be improved to promote fair, just and beneficial outcomes for all individuals" and projects.
 
 -   **Inclusivity** is "the practice of ensuring that data collection, storage, and analysis processes actively consider and represent diverse perspectives, experiences, and identities, preventing the exclusion of marginalized groups and promoting equitable representation across all datasets, ultimately leading to more accurate and comprehensive insights." While we don't have to consider inclusivity when it comes to seals, we do have to consider inclusivity with respect to the people who are collecting, managing and using the data. Some considerations include:
 
@@ -115,7 +115,7 @@ Data management *might seem* beyond the scope of DEIA, but there are important c
 
 -   **Accessibility** - the data and the information about the data need to be accessible. This document (plus other efforts, like PEP Data Days) are intended to make information as accessible as possible for the diversity of needs and users within our program.
 
--   **Belonging** is "the feeling of being accepted and supported in a group, community, or organization". Ultimately, it is my goal that everyone feels like they have access to the information they need and are getting the support that is required. This is a two-way street between project and data management.
+-   **Belonging** is the feeling of being accepted and supported in each project and within our program. Ultimately, it is my goal that everyone feels like they have access to the information they need and are getting the support that is required. This is a two-way street between project and data management.
 
 # Data Management Workflow
 
@@ -342,7 +342,7 @@ S. Koslovsky will orient new staff to the general information provided in the PE
 Below is a list of software required for PEP computers.
 
 | Program                       | Justification                                                                                                     |
-|------------------|------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | QGIS                          | For the most direct connection to PEP database for spatial data                                                   |
 | 64-bit PostgreSQL ODBC driver | For connecting to PEP database via Microsoft Access                                                               |
 | Microsoft Access 2016         | For using PEP database front-ends (this is part of the Microsoft Suite, so might already be installed by default) |
@@ -539,7 +539,7 @@ The table below details the final data are stored in the pep PostgreSQL database
 #### Current Schemas
 
 | **Project**                      | **Schema**          | **Details**                                                                                                                                                                                                                                                                                                                    |
-|--------------|---------------------|-------------------------------------|
+|-----------------|--------------------|-----------------------------------|
 | **Acoustics**                    | acoustics           | Contains data received from CAEP Acoustics program and pre-processed for import into the DB.                                                                                                                                                                                                                                   |
 | **PEP Dashboard**                | administrative      | Contains data associated with the PEP Dashboard (activity planning, data tracking, etc.). An Access front-end is available for managing data.                                                                                                                                                                                  |
 | **Annotations**                  | annotations         | Contains data associated with application of ML models to imagery; the annotations and imagery data are stored within their project schemas; this schema tracks information related to annotation management. An Access front-end is available for managing data.                                                              |
