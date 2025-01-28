@@ -99,9 +99,9 @@ Name and organize your files in such a way that you know what they mean at 3 am 
 | NewFinal.pdf          | ActivityPlan_20170818.pdf  |
 | NewFinalFinal.pdf     | ActivityPlan_20170822.pdf  |
 
-# DEIAB in PEP Data Management
+# Staff Engagement in PEP Data Management
 
-Data management *might seem* beyond the scope of DEIA, but there are important considerations that can be applied to data-related work. DEIAB stands for Diversity, Equity, Inclusivity, Accessibility, and Belonging.
+It is important for staff to be engaged in PEP data management. It goes beyond the processing of data and includes how staff are engaged and considered in our data management practices.
 
 -   **Diversity** recognizes and appreciates our different skills, technical abilities, ideas, backgrounds, and ways of learning (among many other things). It is my intent to approach data management application and training in our program with this in mind. Our jobs and how we interact with data are also diverse; different people will have different needs and different applications for the data we collect and maintain.
 
@@ -277,9 +277,9 @@ Much of the data collected and processed as part of PEP research activities is i
 
 If you are publishing a manuscript and the journal requires the data to be provided on an open data portal, work with S. Koslovsky to identify the most appropriate repository and to ensure metadata are created.
 
-## DEIAB in Data Management Workflow
+## Staff Engagement in Data Management Workflow
 
-Each step in this process is an opportunity to ensure we are achieving DEAIB in our data management practices within our projects. Misses at each step have the potential to introduce delays in processing, to cause staff to feel unwelcome, or to introduce errors.
+Each step in this process is an opportunity to ensure we are achieving staff engagement in our data management practices within our projects. Misses at each step have the potential to introduce delays in processing, to cause staff to feel unwelcome, or to introduce errors.
 
 -   Planning
 
@@ -342,7 +342,7 @@ S. Koslovsky will orient new staff to the general information provided in the PE
 Below is a list of software required for PEP computers.
 
 | Program                       | Justification                                                                                                     |
-|-------------------------------|-------------------------------------------------------------------------------------------------------------------|
+|-----------------|-------------------------------------------------------|
 | QGIS                          | For the most direct connection to PEP database for spatial data                                                   |
 | 64-bit PostgreSQL ODBC driver | For connecting to PEP database via Microsoft Access                                                               |
 | Microsoft Access 2016         | For using PEP database front-ends (this is part of the Microsoft Suite, so might already be installed by default) |
@@ -353,7 +353,7 @@ Below is a list of software required for PEP computers.
 Below is a list of software recommended for PEP computers.
 
 | Program                                  | Justification                                  |
-|------------------------------------------|------------------------------------------------|
+|----------------------------------|--------------------------------------|
 | Anaconda(or miniconda) with Python\>=3.6 | Lots of our tools require Python               |
 | R                                        | Lots of our tools require R (and kept updated) |
 | RStudio                                  | A user-friendly GUI for R                      |
@@ -539,7 +539,7 @@ The table below details the final data are stored in the pep PostgreSQL database
 #### Current Schemas
 
 | **Project**                      | **Schema**          | **Details**                                                                                                                                                                                                                                                                                                                    |
-|----------------------------------|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|----------|----------|---------------------------------------------------|
 | **Acoustics**                    | acoustics           | Contains data received from CAEP Acoustics program and pre-processed for import into the DB.                                                                                                                                                                                                                                   |
 | **PEP Dashboard**                | administrative      | Contains data associated with the PEP Dashboard (activity planning, data tracking, etc.). An Access front-end is available for managing data.                                                                                                                                                                                  |
 | **Annotations**                  | annotations         | Contains data associated with application of ML models to imagery; the annotations and imagery data are stored within their project schemas; this schema tracks information related to annotation management. An Access front-end is available for managing data.                                                              |
