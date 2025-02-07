@@ -10,7 +10,7 @@ format: html
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
-This document was last updated on `r Sys.Date()`.
+This document was created in June-ish 2018 (several months after SMK was hired), migrated to Markdown in November 2024, and last updated on `r Sys.Date()`.
 
 # Objective
 
@@ -342,7 +342,7 @@ S. Koslovsky will orient new staff to the general information provided in the PE
 Below is a list of software required for PEP computers.
 
 | Program                       | Justification                                                                                                     |
-|-------------------------------|-------------------------------------------------------------------------------------------------------------------|
+|------------------|------------------------------------------------------|
 | QGIS                          | For the most direct connection to PEP database for spatial data                                                   |
 | 64-bit PostgreSQL ODBC driver | For connecting to PEP database via Microsoft Access                                                               |
 | Microsoft Access 2016         | For using PEP database front-ends (this is part of the Microsoft Suite, so might already be installed by default) |
@@ -353,7 +353,7 @@ Below is a list of software required for PEP computers.
 Below is a list of software recommended for PEP computers.
 
 | Program                                  | Justification                                  |
-|------------------------------------------|------------------------------------------------|
+|----------------------------------|--------------------------------------|
 | Anaconda(or miniconda) with Python\>=3.6 | Lots of our tools require Python               |
 | R                                        | Lots of our tools require R (and kept updated) |
 | RStudio                                  | A user-friendly GUI for R                      |
@@ -539,7 +539,7 @@ The table below details the final data are stored in the pep PostgreSQL database
 #### Current Schemas
 
 | **Project**                      | **Schema**          | **Details**                                                                                                                                                                                                                                                                                                                    |
-|----------------------------------|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|--------------|--------------|---------------------------------------------|
 | **Acoustics**                    | acoustics           | Contains data received from CAEP Acoustics program and pre-processed for import into the DB.                                                                                                                                                                                                                                   |
 | **PEP Dashboard**                | administrative      | Contains data associated with the PEP Dashboard (activity planning, data tracking, etc.). An Access front-end is available for managing data.                                                                                                                                                                                  |
 | **Annotations**                  | annotations         | Contains data associated with application of ML models to imagery; the annotations and imagery data are stored within their project schemas; this schema tracks information related to annotation management. An Access front-end is available for managing data.                                                              |
