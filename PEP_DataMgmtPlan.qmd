@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 This document was created in June-ish 2018 (several months after SMK was hired), migrated to Markdown in November 2024, and last updated on `r Sys.Date()`.
 
+The NOAA Data Management Handbook can be found at this site (ADD WEBLINK).
+
 # Objective
 
 Welcome to the Polar Ecosystems Program (PEP; pronounced both as P-E-P and pep) Data Management Plan. The objective of this document is to outline and implement consistent information management procedures for PEP data.
@@ -123,7 +125,39 @@ The figure below describes the general process that PEP uses for managing data, 
 
 ![](docs/PEP_DataMgmtPlan_files/images/DataManagementWorkflow.png){fig-align="center"}
 
+## Scope
+
+The PEP Data Management Plan operates in accordance of the scope of the NOAA Data Management Handbook. These lists have been subset to list datasets relevant to PEP.
+
+### Data in Scope
+
+-   Derived data and/or data products
+
+-   Digital audio or video recordings of environmental phenomena
+
+-   Data collected in a laboratory or other controlled environment
+
+-   Model output
+
+-   Third-party data purchased or acquired from external sources that NOAA disseminates or uses in externally facing products or services
+
+-   All legacy data archived in digital form at the NCEI
+
+### Data out of Scope
+
+-   Third-party data purchased or acquired from external sources for internal NOAA access and use only
+
+-   Legacy data that were produced by NOAA Programs, which no longer exist and were never archived
+
+-   Archival information disseminated by NOAA before June 30, 2008
+
+-   Information relating to correspondence with individuals or persons
+
+-   Data labelled as classified, Controlled Unclassified Information (CUI), or restricted
+
 ## Plan
+
+(corresponds to "Plan" in the NOAA Data Management Handbook)
 
 <details>
 
@@ -145,6 +179,8 @@ The [NOAA Data Management Planning Procedural Directive](https://nosc.noaa.gov/E
 
 ## Integrate
 
+(not mentioned in the NOAA Data Management Handbook)
+
 <details>
 
 <summary>Click to Expand</summary>
@@ -152,6 +188,8 @@ The [NOAA Data Management Planning Procedural Directive](https://nosc.noaa.gov/E
 For on-going projects, we will incorporate feedback from the previous year's/season's effort to make improvements to the upcoming effort. For new projects, this might include considering lessons learned from other projects.
 
 ## Collect
+
+(corresponds to "Obtain" in the NOAA Data Management Handbook)
 
 <details>
 
@@ -172,6 +210,8 @@ During field data collection, begin preliminary data management, as able:
 -   Enter field data into cloud-based data entry tools.
 
 ## Process
+
+(corresponds to "Process" and "Preserve" in the NOAA Data Management Handbook)
 
 <details>
 
@@ -221,6 +261,8 @@ All data copied to the network are backed up offsite in one of two ways: snap-mi
 
 ## Debrief
 
+(not mentioned in the NOAA Data Management Handbook, but somewhat captured in the "Dispose" section, in consideration of continued needs for how/when/why data are collected, managed and stored)
+
 <details>
 
 <summary>Click to Expand</summary>
@@ -228,6 +270,8 @@ All data copied to the network are backed up offsite in one of two ways: snap-mi
 After fieldwork is completed, part of the larger project debrief should include time for discussing in-field data collection and management. The general comments and any specific actionable changes uncovered during the debrief should be incorporated into the INTEGRATE step in the next cycle of the data management workflow for that project.
 
 ## Analyze
+
+(corresponds to "Access" in the NOAA Data Management Handbook)
 
 <details>
 
@@ -237,6 +281,8 @@ Part of the data workflow is to ensure the final products are easily usable and 
 
 ## Evaluate
 
+(not mentioned in the NOAA Data Management Handbook)
+
 <details>
 
 <summary>Click to Expand</summary>
@@ -244,6 +290,8 @@ Part of the data workflow is to ensure the final products are easily usable and 
 We want to emphasize the feedback loop from analytical processes to data management. Our goal with data management is to streamline processing and extraction of information for analyses. This may be updates/improvements to data management processes over time. Feedback and communication are important for ensuring data products meet current and future analytical needs, and this information should be incorporated into the INTEGRATE step in the next cycle of the data management workflow for any related field projects.
 
 ## Share
+
+(corresponds to "Share" in the NOAA Data Management Handbook)
 
 <details>
 
@@ -276,6 +324,32 @@ For more information on metadata workflow, [review this documentation](https://d
 Much of the data collected and processed as part of PEP research activities is intended for public release, either in compliance with NOAA policies (e.g. Public Access to Research Results \[PARR\]) or in support of best practices related to open science and reproducible research. Keeping track of the evolving policies and expanding tools/repositories available can be challenging. Here, we outline our plan for the use of available repositories.
 
 If you are publishing a manuscript and the journal requires the data to be provided on an open data portal, work with S. Koslovsky to identify the most appropriate repository and to ensure metadata are created.
+
+## Dispose
+
+(added based on information from the NOAA Data Management Handbook)
+
+Disposition of data is based on community needs and the records retention schedule. This does include deletion of information based on the terms of the records retention schedule. (ADD INFORMATION ABOUT TESTING OR TEMPORARY DATA)
+
+## Cross-Cutting Components
+
+(added based on information from the NOAA Data Management Handbook)
+
+### Document
+
+During data collection and processing, document workflows and processes used to collect and generate data. Once data processing is complete, use this information to generate standard metadata to ensure provenance and independent usability.
+
+### Track and Monitor
+
+Track and monitor data and metadata through the life cycle management process and monitor the application of data management principles.
+
+### Quality
+
+Ensure the quality, objectivity, utility, and integrity of the data. See NAO 202-735D-2: Scientific Integrity (INSERT LINK) for more information on this topic.
+
+### Security
+
+Protect data from unauthorized access, corruption and theft.
 
 ## Staff Engagement in Data Management Workflow
 
@@ -342,7 +416,7 @@ S. Koslovsky will orient new staff to the general information provided in the PE
 Below is a list of software required for PEP computers.
 
 | Program                       | Justification                                                                                                     |
-|------------------|------------------------------------------------------|
+|-----------------|-------------------------------------------------------|
 | QGIS                          | For the most direct connection to PEP database for spatial data                                                   |
 | 64-bit PostgreSQL ODBC driver | For connecting to PEP database via Microsoft Access                                                               |
 | Microsoft Access 2016         | For using PEP database front-ends (this is part of the Microsoft Suite, so might already be installed by default) |
@@ -537,7 +611,7 @@ The table below details the final data are stored in the pep PostgreSQL database
 #### Current Schemas
 
 | **Project**                      | **Schema**          | **Details**                                                                                                                                                                                                                                                                                                                    |
-|--------------|--------------|---------------------------------------------|
+|----------|----------|---------------------------------------------------|
 | **Acoustics**                    | acoustics           | Contains data received from CAEP Acoustics program and pre-processed for import into the DB.                                                                                                                                                                                                                                   |
 | **PEP Dashboard**                | administrative      | Contains data associated with the PEP Dashboard (activity planning, data tracking, etc.). An Access front-end is available for managing data.                                                                                                                                                                                  |
 | **Annotations**                  | annotations         | Contains data associated with application of ML models to imagery; the annotations and imagery data are stored within their project schemas; this schema tracks information related to annotation management. An Access front-end is available for managing data.                                                              |
